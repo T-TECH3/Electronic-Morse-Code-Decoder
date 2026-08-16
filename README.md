@@ -33,24 +33,5 @@ The Electronic Morse Code Decoder is an embedded systems project that uses an Ar
 
 Note: The pin locations may vary from component to component, so be sure to double-check the pins are wired to the correct spot.
 
-## Simulation Algorithms
-
-The project has two distinct visual physics algorithms to manipulate the 8x8 LED grid based on the tilt angle ($\theta$) received from the MPU-6050 IMU. Before starting the simulation, the program will allow the user to choose which algorithm to use.
-
-1. Particle Matrix Simulation (`particle_matrix_simulate`) This algorithm approach treats every illuminated pixel as an individual particle of sand subject to gravity.
-
-* **Gravity Vector:** The tilt angle is translated into individual horizontal and vertical components of force using sine and cosine functions in radians:
-  $$F_x = \sin(\theta), \quad F_y = \cos(\theta)$$
-* **Coordinate Surrounding Mapping:** The function scans the grid to find active pixels (`1`). For each active pixel, it evaluates all 8 immediate neighboring spaces $(k, l)$ where $k, l \in \{-1, 0, 1\}$.
-* **Neighboring Score:** If a neighboring cell is empty (`0`), the algorithm calculates a gravitational weight score for that vacancy:
-  $$Score = (l \times F_x) + (k \times F_y)$$
-* **Particle Displacement:** The particle shifts into the adjacent empty spot that yields the highest positive score. If no empty space aligns with the downward pull of gravity, the particle remains stationary.
-* **Performance:** Particles dynamically stack, roll over one another, and settle into corners based on individual localized logic. The drawback of this algorithm is the mass, inertia and downward pressure of each particle are not taken into account, making the matrix appear "clunky" and not visualy smooth.
-
-2. Line Matrix Simulation (`line_matrix_simulate`) This algorithm approach illuminates particles under a line that tilts dynamically across the matrix. 
-
-* **Line Calculation:** The algorithm converts the angle from degrees to radians and calculates the tangent slope ($$m = \tan(\theta)$$) of the dividing line.
-* **Coordinate Mapping:** It iterates through every coordinate $(i, j)$ on the 8x8 grid. For each column ($i$), it maps a $Y$-intercept ($line\_y$) relative to the center of the display:
-  $$line\_y = m \times (i - 4) + 3.5$$
-* **LED Illumination:** LEDs are illuminated selectively depending on whether the row index ($j$) falls above or below the calculated line boundary. The behavior splits at $\pm90^\circ$ to handle full inversions cleanly.
-* **Performance:** It clears and redraws the mathematical state of the screen from scratch every frame. The accuracy of this method is very responsive, and the visual looks fluid. The drawback of this algorithm is that there is not a constant amount of dots illuminated depending on the angle.
+## System Overview
+The LCD display shows the current Morse code input on the first row, using dots and dashes, while the second row displays the decoded characters as a message. When the input button is pressed, the system measures how long it is held. A short press produces a dot (<250 ms), while a longer press produces a dash (>250 ms), and the buzzer sounds while the button is held. After 750 ms without another input, the system recognizes the Morse code as a letter, displays it on the second row of the LCD, and clears the first row containing the dots and dashes. If there is no input for more than 4000 ms, the system displays a space between words. The second button clears both rows of the LCD so a new message can be entered. When either row becomes full, the text automatically shifts to the left to make room for new characters. A potentiometer controls the LCD contrast, allowing the display to be adjusted so the characters are easier to see.
