@@ -2,7 +2,7 @@
   <h1>Electronic Morse Code Decoder</h1>
 </div>
 
-![Gravity Matrix](Images/Gravity_Matrix_Setup.png)
+![Gravity Matrix](Images/Morse_Code_Decoder_Setup.png)
 
 ## Description
 The Electronic Morse Code Decoder is an embedded systems project that uses an Arduino Due, LCD, push buttons, and buzzer to create a Morse code system that displays letters and their Morse code input on the LCD. The code uses arrays to store the alphabet and corresponding Morse code, then measures the length of the button inputs to select characters and uses a buzzer to provide audio feedback.
