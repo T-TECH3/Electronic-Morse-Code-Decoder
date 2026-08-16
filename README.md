@@ -7,7 +7,10 @@
 ## Description
 The Electronic Morse Code Decoder is an embedded systems project that uses an Arduino Due, LCD, push buttons, and buzzer to create a Morse code system that displays letters and their Morse code input on the LCD. The code uses arrays to store the alphabet and corresponding Morse code, then measures the length of the button inputs to select characters and uses a buzzer to provide audio feedback.
 
-[Video Demonstration](https://youtu.be/sjt5iHAWDqE)
+**International Morse Code:** <br />
+| A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| .- | -... | -.-. | -.. | . | ..-. | --. | .... | .. | .--- | -.- | .-.. | -- | -. | --- | .--. | --.- | .-. | ... | - | ..- | ...- | .-- | -..- | -.-- | --.. |
 
 ## Parts
 - Arduino DUE (1x) [[Buy](https://store.arduino.cc/products/arduino-due?_su_rec=P52S7puitrxi2NiPlyMu0O1ZqSe1HEgDTXVc0ufymlwZE4qImo1EKuilDWeIf1GcZGFLw5S3r0fhDmIVJBg16WiqqZWBG2Gwb_nscC-kRRmf-OTwiumlbkcUF6bmII-6hWSiDEFVDeBP1rc1Z6GmXJ9YWIJf2pBYdWd0ZxVHnggykR0e0waHy-IhaWtLkZGdzLZX6gGYUtd_nWagpV8KBgrfaeLKOpAvHcqPGTSf1TH7FpH4Glc_h6mrO-VN&_su_rec_id=4839a77e-c298-444b-89f6-214208d6eb6e-1786890684)]
